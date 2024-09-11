@@ -1,0 +1,14 @@
+# Necessities Configuration
+# -------------------------
+# This is the general configuration file for the entire plugin.
+# If you want to enable or disable an individual module, look
+#  in the `modules/` folder, and edit the "enabled" property
+#  in that module's configuration file.
+#
+# ---
+# General
+#
+# What aliases should we set for the base command? (/necessities)
+#  Default is `/nc`.
+command-aliases:
+  - "nc"
