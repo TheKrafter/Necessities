@@ -1,0 +1,4 @@
+name: Necessities
+version: '1.0-SNAPSHOT'
+main: xyz.krafterdev.necessities.Necessities
+api-version: '1.21'
