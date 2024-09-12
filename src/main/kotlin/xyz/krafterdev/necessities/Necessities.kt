@@ -14,7 +14,7 @@ class Necessities : JavaPlugin() {
 
         // Register Commands
         var cmds = Commands(this, conf)
-            get
+
 
     }
 

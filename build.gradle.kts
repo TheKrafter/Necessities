@@ -1,6 +1,7 @@
 plugins {
     kotlin("jvm") version "2.0.20"
     id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("xyz.jpenilla.run-paper") version "2.3.1"
 }
 
 group = "xyz.krafterdev"
@@ -36,5 +37,11 @@ tasks.processResources {
     filteringCharset = "UTF-8"
     filesMatching("paper-plugin.yml") {
         expand(props)
+    }
+}
+
+tasks {
+    runServer {
+        minecraftVersion("1.21.1")
     }
 }

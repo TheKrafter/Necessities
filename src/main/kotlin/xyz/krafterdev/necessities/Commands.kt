@@ -7,24 +7,40 @@ import com.mojang.brigadier.context.CommandContext
 import io.papermc.paper.command.brigadier.Commands
 import io.papermc.paper.plugin.lifecycle.event.LifecycleEventManager
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents
-import org.jetbrains.kotlin.wasm.ir.WasmHeapType.Simple.Func
-
 @Suppress("UnstableApiUsage")
-class Commands(plugin: JavaPlugin, conf: Config) {
+class Commands(var plugin: JavaPlugin, var conf: Config) {
     /*
-        Register Commands
+        Register Base Commands
      */
-    var manager: LifecycleEventManager<Plugin?> = plugin.lifecycleManager
 
     init {
-        plugin.logger.info("Registering commands...")
-        plugin.getCommand("necessities").setExecutor()
+        plugin.logger.info("Registering base commands...")
+        register()
     }
 
-    /*
-        Various Command Handlers
-     */
-    fun handle_necessities(ctx: CommandContext, ) {
-        ctx.getSource().sender.sendPlainMessage("your mom")
+    fun register() {
+        var manager: LifecycleEventManager<Plugin?> = plugin.lifecycleManager
+        manager.registerEventHandler(LifecycleEvents.COMMANDS) { event ->
+            val commands: Commands = event.registrar()
+            val aliases: List<String>? = conf.config?.getStringList("command-aliases")
+            var commandAliases: List<String> = emptyList()
+            if (aliases == null) {
+                commandAliases = listOf("necessities")
+            } else {
+                commandAliases = listOf("necessities") + aliases
+            }
+            for (name in commandAliases) {
+                commands.register(
+                    Commands.literal("$name")
+                        .executes { ctx ->
+                            ctx.getSource().sender.sendPlainMessage("Necessities v1.0-SNAPSHOT, by Krafter")
+                            Command.SINGLE_SUCCESS
+                        }
+                        .build(),
+                    "Necessities by Krafter",
+                )
+            }
+
+        }
     }
 }
