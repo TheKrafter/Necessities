@@ -17,6 +17,7 @@ This plugin intends to solve the issues of EssentialsX, with the aim to be both 
 organizing each set of features into its own "module" which can be completely disabled or enabled in their individual 
 config file. On top of that, only a few modules are enabled by default, so you can just enable what you need.
 
+[View Roadmap](ROADMAP.md)
 
 ---
 Necessities is licensed under the BSD-3-Clause license, as per the LICENSE file. If the LICENSE file cannot be found, 
