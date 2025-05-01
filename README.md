@@ -4,6 +4,7 @@
 
 <p>An opinionated reimplementation of EssentialsX, in Kotlin.</p>
 </div>
+## This project has moved to [Codeberg](https://codeberg.org/krafter/Necessities).
 
 #### Developer's Note: this plugin is a work in progress, a far off dream and ambition. It is nowhere near completion yet.
 
